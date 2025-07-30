@@ -1,0 +1,411 @@
+/* Reset and base layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top navbar */
+.nav-bar {
+  position: fixed;      /* ADDED */
+  top: 0;              /* ADDED */
+  left: 0;             /* ADDED */
+  width: 100%;         /* ADDED */
+  height: 60px;        /* ADDED */
+  z-index: 1100;       /* ADDED */
+  background-color: #ff5722;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Move hamburger to the right */
+.menu-toggle {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  order: 2;          /* Push hamburger to right */
+  margin-left: auto; /* Push hamburger fully right */
+  position: relative; /* ADDED */
+  z-index: 1200;      /* ADDED */
+}
+
+/* Title stays left */
+.title {
+  font-size: 40px;
+  font-weight: 600;
+  order: 1;
+ 
+}
+
+
+/*  */
+@media (min-width: 769px) {
+  .title {
+    order: 1;
+    text-align: left;
+    flex-grow: 1;       /* Take up left space */
+    font-size: 40px;
+    font-weight: 600;
+  }
+  .title::before {
+   
+    margin-right: 4px;
+    vertical-align: top;
+  }
+  .menu-toggle {
+    order: 2;
+    margin-left: auto;  /* Keep hamburger right */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  */
+
+/* Container for sidebar + main area */
+.container {
+  flex: 1;
+  display: flex;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  margin-top: 60px;    /* ADDED to prevent content hiding behind navbar */
+}
+
+/* Sidebar */
+.left {
+  width: 220px;
+  background-color: #fff;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+}
+
+/* Sidebar header */
+.left h3 {
+  margin-bottom: 15px;
+  color: #ff5722;
+}
+
+/* Sidebar menu */
+.left ul {
+  list-style: none;
+}
+
+.left ul li {
+  margin: 10px 0;
+}
+
+.left ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px;
+  display: block;
+  border-radius: 5px;
+}
+
+.left ul li a:hover {
+  background-color: #ffe1d6;
+  color: #ff5722;
+}
+
+/* Product display */
+.right {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  overflow-y: auto;
+  background-color: #fefefe;
+}
+
+/* Product card */
+.product-card {
+  background: linear-gradient(145deg, #fff7f0, #ffe8d6);
+  width: 200px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(255, 115, 60, 0.15);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 14px 28px rgba(255, 115, 60, 0.35);
+}
+
+.product-card img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 16px rgba(255, 110, 55, 0.35);
+}
+
+.product-card h4 {
+  margin: 8px 0 6px;
+  color: #d95218;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(255, 121, 60, 0.5);
+}
+
+.product-card p {
+  color: #7f4a1a;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  line-height: 1.3;
+  min-height: 42px;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Improved consistent buttons */
+.product-card button {
+  background: linear-gradient(135deg, #ff7a39, #ff3f00);
+  color: white;
+  border: none;
+  padding: 10px 26px;
+  font-weight: 700;
+  border-radius: 24px;
+  box-shadow: 0 5px 12px rgba(255, 115, 60, 0.45);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.35s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  width: 140px;
+  margin: 0 auto;
+  display: block;
+  align-self: center;
+  text-align: center;
+}
+
+.product-card button:hover {
+  background: linear-gradient(135deg, #ff3f00, #ff7a39);
+  box-shadow: 0 9px 26px rgba(255, 115, 60, 0.7);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.product-card button:active {
+  background: #c73800;
+  box-shadow: 0 4px 10px rgba(199, 56, 0, 0.8);
+  transform: translateY(0) scale(1);
+}
+
+/* Footer */
+footer {
+  background-color: #eee;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+}
+
+/* Responsive sidebar toggle */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* Sidebar slides in from the right */
+  .left {
+    position: fixed; /* fixed to stay on screen */
+    top: 60px;
+    right: 0; /* slide in from right */
+    width: 220px;
+    height: calc(100vh - 60px);
+    background-color: #fff;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  }
+
+  /* When active, sidebar slides fully into view */
+  .left.active {
+    transform: translateX(0);
+  }
+
+  .right {
+    justify-content: center;
+  }
+}
+
+/* Order Summary Panel */
+#order-summary {
+  position: fixed;
+  right: 10px;
+  top: 80px;
+  width: 300px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 999;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#order-summary h3 {
+  margin-bottom: 15px;
+  color: #ff5722;
+  font-size: 1.4em;
+}
+
+#order-summary ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+#order-summary li {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#order-summary p {
+  margin: 10px 0;
+}
+
+#order-summary button {
+  margin-top: 10px;
+  margin-right: 10px;
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#order-summary button:hover {
+  background: #e64a19;
+}
+
+.remove-item {
+  background-color: #e53935;
+  margin-left: 10px;
+  padding: 4px 8px;
+  font-size: 0.8em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-item:hover {
+  background-color: #c62828;
+}
+
+/* Complete Order Button */
+#complete {
+  background-color: #ff5722; /* theme color */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 87, 34, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px;
+  display: inline-block;
+}
+
+#complete:hover {
+  background-color: #e64a19;
+  box-shadow: 0 6px 12px rgba(230, 74, 25, 0.5);
+}
+
+#complete:active {
+  background-color: #d84315;
+  box-shadow: 0 2px 4px rgba(216, 67, 21, 0.7);
+}
+
+/* Popup Notification */
+#popup {
+  position: fixed;
+  top: 60px; /* Changed to appear below navbar */
+  right: 20px;
+  background: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  #complete {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto; /* center if smaller container */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Also prevent body/container horizontal scroll */
+  body, .container {
+    overflow-x: hidden;
+  }
+}
+@keyframes blink {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+.menu-toggle .imgg {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  animation: blink 3s ;
+  background-color: #fefefe;
+}
